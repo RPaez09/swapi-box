@@ -19,8 +19,7 @@ import { Vehicles } from './pages/vehicles';
 const App: React.FC = () => {
 
   return (
-    <>
-    <Container>
+    <Container className="my-5">
       <Row>
         <Col xs={12} md={3}>
           <FilmScrollText />
@@ -30,9 +29,13 @@ const App: React.FC = () => {
             <MainTitle />
             <FavoritesButton />
           </div>
-          <PageLink title={'people'} />
-          <PageLink title={'planets'} />
-          <PageLink title={'vehicles'} />
+
+          <div className="d-flex justify-content-around mb-4">
+            <PageLink title={'people'} />
+            <PageLink title={'planets'} />
+            <PageLink title={'vehicles'} />
+          </div>
+         
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/people" exact component={People} />
@@ -41,9 +44,7 @@ const App: React.FC = () => {
             </Switch>
         </Col>
       </Row>
-    </Container>
-       
-    </>   
+    </Container>  
   );
 }
 

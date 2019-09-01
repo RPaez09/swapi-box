@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from 'react';
 
+import './styles.css';
+
 export const FilmScrollText: React.FC = () => {
   const [data, setData] = useState()
 
@@ -18,9 +20,10 @@ export const FilmScrollText: React.FC = () => {
     <>
       {data ? (
       <div>
-        <p>{data.opening_crawl}</p>
-        <p>{data.title}</p>
-        <p> {data.release_date}</p>
+        <p className="title text-uppercase">{data.title}</p>
+        <p className="subtitle"> {data.release_date}</p>
+        <p className="text">{data.opening_crawl}</p>
+       
       </div>
       
       ) : null } 

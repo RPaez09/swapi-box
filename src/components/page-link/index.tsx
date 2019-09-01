@@ -9,7 +9,7 @@ interface IPageLinkProps {
 
 export const PageLink: React.FC<IPageLinkProps> = (props) => {
   return (
-      <Link className="btn btn-primary" to={`/${props.title}`}>
+      <Link className="btn btn-primary page-link" to={`/${props.title}`}>
         {props.title}
       </Link>   
   )

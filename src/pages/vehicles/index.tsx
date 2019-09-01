@@ -11,14 +11,16 @@ export const Vehicles: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap justify-content-around">
         {data ? (
           data.map((vehicle: any) =>
-            <div className="person-card flex-grow-1" key={vehicle.name}>
-              <h2>{vehicle.name}</h2>
-              <h3 className="text-center">Model: {vehicle.model}</h3>
-              <h3 className="text-center">Class: {vehicle.vehicle_class} </h3>
-              <h3 className="text-center">No. of Passengers: {vehicle.passengers} </h3>
+            <div className="page-card" key={vehicle.name}>
+              <h2 className="page-card-title p-2">{vehicle.name}</h2>
+              <div className="p-2">
+                <h3 className="page-card-text">Model: {vehicle.model}</h3>
+                <h3 className="page-card-text">Class: {vehicle.vehicle_class} </h3>
+                <h3 className="page-card-text">No. of Passengers: {vehicle.passengers} </h3>
+              </div>
             </div>
 
           )

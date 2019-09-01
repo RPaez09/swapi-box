@@ -11,17 +11,18 @@ export const Planets: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap justify-content-around">
         {data ? (
           data.map((planet: any) =>
-            <div className="person-card flex-grow-1" key={planet.name}>
-              <h2>{planet.name}</h2>
-              <h3 className="text-center">Terrain: {planet.terrain}</h3>
-              <h3 className="text-center">Population: {planet.population} </h3>
-              <h3 className="text-center">Climate: {planet.climate} </h3>
-              <h3 className="text-center">Residents: </h3>
+            <div className="page-card" key={planet.name}>
+              <h2 className="page-card-title p-2">{planet.name}</h2>
+              <div className="p-2">
+                <h3 className="page-card-text">Terrain: {planet.terrain}</h3>
+                <h3 className="page-card-text">Population: {planet.population} </h3>
+                <h3 className="page-card-text">Climate: {planet.climate} </h3>
+                <h3 className="page-card-text">Residents: </h3>
+              </div>
             </div>
-
           )
         ) : null}
       </div>
