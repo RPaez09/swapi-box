@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
 
 export const FavoritesButton: React.FC = () => {
   return (
-    <Link to="/">View Favorites</Link>
+    <BrowserRouter>
+      <Link to="/">View Favorites</Link>
+    </BrowserRouter>
   )
 }
 

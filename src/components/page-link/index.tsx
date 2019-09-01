@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link, BrowserRouter } from 'react-router-dom';
+
+import './styles.css';
 
 interface IPageLinkProps {
   title: string;
@@ -6,7 +9,12 @@ interface IPageLinkProps {
 
 export const PageLink: React.FC<IPageLinkProps> = (props) => {
   return (
-    <button>{props.title}</button>
+    <BrowserRouter>
+      <Link className="btn btn-primary" to={`/${props.title}`}>
+        {props.title}
+      </Link>
+    </BrowserRouter>
+   
   )
 }
 
