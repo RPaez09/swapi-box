@@ -4,3 +4,30 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
 }
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page-card {
+  background-color: #363636;
+  border: solid 5px black;
+  flex-basis: 25%;
+  transition: opacity ease-in-out 300ms;
+}
+
+.page-card:hover {
+  opacity: .5;
+  cursor: pointer;
+}
+
+.page-card-title {
+  background-color: #15161C;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.page-card-text {
+  font-size: 17px;
+}

@@ -6,6 +6,11 @@
   transition: all 300ms ease-in-out;
 }
 
+.page-link-active {
+  color: black;
+  background-color: white;
+}
+
 .page-link:hover {
   color: black;
 }

@@ -1,10 +1,14 @@
 import React from 'react';
 
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 export const MainTitle: React.FC = () => {
   return (
-    <h1 className="text-center page-title">SWAPI-Box</h1>
+    <Link className="text-center page-title" to="/">
+      SWAPI-Box
+    </Link>
+    
   )
 }
 
