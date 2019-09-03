@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 
 export const FavoritesButton: React.FC = () => {
   return (
-      <Link to="/">View Favorites</Link>
+      <Link to="/favorites">
+        <span>View
+        <span> 0 </span>Favorites</span>
+      </Link>
   )
 }
 

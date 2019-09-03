@@ -15,6 +15,7 @@ import './App.css';
 import { People } from './pages/people';
 import { Planets } from './pages/planets';
 import { Vehicles } from './pages/vehicles';
+import { Favorites } from './pages/favorites';
 
 const App: React.FC = () => {
 
@@ -25,23 +26,25 @@ const App: React.FC = () => {
           <FilmScrollText />
         </Col>
         <Col xs={12} md={9}>
-          <div className="d-flex align-items-center justify-content-center">
+
+          <div className="d-flex align-items-center justify-content-center flex-column">
             <MainTitle />
             <FavoritesButton />
           </div>
 
-          <div className="d-flex justify-content-around mb-4">
-            <PageLink title={'people'} />
-            <PageLink title={'planets'} />
-            <PageLink title={'vehicles'} />
+          <div className="d-flex justify-content-around mb-3 mt-5 button-wrapper">
+            <PageLink title={ 'people' } />
+            <PageLink title={ 'planets' } />
+            <PageLink title={ 'vehicles' } />
           </div>
          
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/people" exact component={People} />
-              <Route path="/planets" exact component={Planets} />
-              <Route path="/vehicles" exact component={Vehicles} />
-            </Switch>
+          <Switch>
+            <Route path="/" exact component={ Home } />
+            <Route path="/people" exact component={ People } />
+            <Route path="/planets" exact component={ Planets } />
+            <Route path="/vehicles" exact component={ Vehicles } />
+            <Route path="/favorites" exact component={ Favorites }/>
+          </Switch>
         </Col>
       </Row>
     </Container>  

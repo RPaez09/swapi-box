@@ -20,10 +20,9 @@ export const FilmScrollText: React.FC = () => {
     <>
       {data ? (
       <div>
+        <p className="text">{data.opening_crawl}</p>
         <p className="title text-uppercase">{data.title}</p>
         <p className="subtitle"> {data.release_date}</p>
-        <p className="text">{data.opening_crawl}</p>
-       
       </div>
       
       ) : null } 

@@ -4,13 +4,19 @@
   font-weight: 900;
   padding: 10px 35px;
   transition: all 300ms ease-in-out;
+  border: none;
+  border-radius: 0;
+  font-size: 25px;
+  flex: 33.33%;
 }
 
 .page-link-active {
   color: black;
   background-color: white;
+  transition: all 300ms;
 }
 
 .page-link:hover {
   color: black;
+  background-color: white;
 }
