@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+interface IVehicleDisplay {
+  name: string;
+  model: string;
+  vehicle_class: string;
+  passengers: number;
+}
+
 export const Vehicles: React.FC = () => {
   const [data, setData] = useState()
 
@@ -13,7 +20,7 @@ export const Vehicles: React.FC = () => {
     <>
       <div className="d-flex flex-wrap justify-content-around">
         {data ? (
-          data.map((vehicle: any) =>
+          data.map((vehicle: IVehicleDisplay) =>
             <div className="page-card" key={vehicle.name}>
               <h2 className="page-card-title p-2">{vehicle.name}</h2>
               <div className="p-2">
