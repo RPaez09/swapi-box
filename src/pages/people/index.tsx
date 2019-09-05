@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Card } from '../../components/card';
 
-interface IPersonDisplay {
+interface IPersonProps {
   name: string;
   homeworld: string;
   homeworld_name: string;
@@ -19,9 +20,8 @@ interface IPersonRequest {
   language: string;
 }
 
-export const People: React.FC = () => {
+export const People: React.FC<IPersonProps>= () => {
   const [data, setData] = useState()
-  const [favs, setFavs] = useState(JSON.parse(localStorage.items || '{}'));
 
   useEffect(() => {
     fetch(`https://swapi.co/api/people/`)
@@ -30,7 +30,7 @@ export const People: React.FC = () => {
         setData(response.results);
         fetchAdditional(response.results);
       })
-      .catch((error) => console.log(error))  
+      .catch((error) => console.error(error))  
   }, []);
 
   const fetchAdditional = (people: any) => {
@@ -42,7 +42,7 @@ export const People: React.FC = () => {
         person.population = response.population;
         setData([...people])
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.error(error))
       fetch(person.species)
         .then(response => response.json())
         .then(response => {
@@ -50,45 +50,24 @@ export const People: React.FC = () => {
           person.language = response.language;
           setData([...people])
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.error(error))
     }) 
-  }
-
-
-  const handleClick = (data: any) => {
-
-    const newFavs: { [key: string]: any } = { ...favs };
-
-    if (newFavs[data.url]) {
-      delete newFavs[data.url];
-    } else {
-      newFavs[data.url] = data;
-    }
-
-    setFavs((favs: any) => newFavs);
-    
-    localStorage.setItem('items', JSON.stringify(newFavs));
   }
 
   return (
     
     <div className="d-flex flex-wrap justify-content-around">
         {data ? (     
-          data.map((person: IPersonDisplay, index: number) =>
-          
-            <div
-              className="page-card"
-              onClick={(() => handleClick( person ))}
-              key={ index }>
-              <h2 className="page-card-title p-2">{ person.name }</h2>
-              <div className="p-2">
-              <h3 className="page-card-text">
-                Homeworld: { person.homeworld_name }</h3>
-                <h3 className="page-card-text">Species: { person.species_name }</h3>
-                <h3 className="page-card-text">Language: { person.language }</h3>
-                <h3 className="page-card-text">Population: { person.population }</h3>
-              </div>
-            </div>
+        data.map((person: IPersonProps, index: number) =>
+              <Card
+                key={ index }
+                click={ person }
+                title={ person.name }
+                homeworld={ person.homeworld_name }
+                species={ person.species_name }
+                language={ person.language }
+                population={ person.population }>
+              </Card>
           )
         ) : <h1>loading...</h1>}
     </div>       

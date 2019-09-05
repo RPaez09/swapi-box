@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Card } from '../../components/card';
 
-interface IVehicleDisplay {
+interface IVehicleProps {
   name: string;
   model: string;
   vehicle_class: string;
   passengers: number;
 }
 
-export const Vehicles: React.FC = () => {
+export const Vehicles: React.FC<IVehicleProps> = () => {
   const [data, setData] = useState()
 
   useEffect(() => {
@@ -16,22 +17,23 @@ export const Vehicles: React.FC = () => {
       .then(response => setData(response.results))
       .catch(error => console.log(error))
   }, []);
+
   return (
     <>
       <div className="d-flex flex-wrap justify-content-around">
         {data ? (
-          data.map((vehicle: IVehicleDisplay) =>
-            <div className="page-card" key={vehicle.name}>
-              <h2 className="page-card-title p-2">{vehicle.name}</h2>
-              <div className="p-2">
-                <h3 className="page-card-text">Model: {vehicle.model}</h3>
-                <h3 className="page-card-text">Class: {vehicle.vehicle_class} </h3>
-                <h3 className="page-card-text">No. of Passengers: {vehicle.passengers} </h3>
-              </div>
-            </div>
-
+          data.map((vehicle: IVehicleProps, index: number) =>
+          <Card
+            click={ vehicle }
+            title={ vehicle.name }
+            key={ index }
+            model={ vehicle.model }  
+            class={ vehicle.vehicle_class }
+            passengers={ vehicle.passengers }
+          >
+          </Card>
           )
-        ) : null}
+        ) : <h1>Loading...</h1>}
       </div>
 
     </>

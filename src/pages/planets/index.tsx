@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Card } from '../../components/card';
 
-interface IPlanetDisplay {
+interface IPlanetProps {
   name: string;
   terrain: string;
   population: string;
@@ -8,7 +9,7 @@ interface IPlanetDisplay {
   residentList: [];
 }
 
-export const Planets: React.FC = () => {
+export const Planets: React.FC<IPlanetProps> = () => {
   const [data, setData] = useState()
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export const Planets: React.FC = () => {
         setData(response.results)
         fetchAdditional(response.results)
       })
-      .catch(error => console.log(error))
+      .catch(error => console.error(error))
   }, []);
 
   const fetchAdditional = (planets: any) => {
@@ -30,24 +31,30 @@ export const Planets: React.FC = () => {
           .then(response => {
             planet.residentList.push(response.name)
             setData([...planets])
-            
           })
+          .catch(error => console.error(error));
       })
-
     });
   }
   return (
     
-    <>
       <div className="d-flex flex-wrap justify-content-around">
         {data ? (
-          data.map((planet: IPlanetDisplay, index: number) =>
-            <div className="page-card" key={ index }>
+          data.map((planet: IPlanetProps, index: number) =>
+
+              <Card
+                click={ planet }
+                title={ planet.name }
+                key={ index }
+                terrain={ planet.terrain }
+                population={ planet.population }
+                climate={ planet.climate }
+              >
+              </Card>
+            /* <div className="page-card" key={ index }>
               <h2 className="page-card-title p-2">{planet.name}</h2>
               <div className="p-2">
-                <h3 className="page-card-text">Terrain: {planet.terrain}</h3>
-                <h3 className="page-card-text">Population: {planet.population} </h3>
-                <h3 className="page-card-text">Climate: {planet.climate} </h3>
+               
                 <h3 className="page-card-text">Residents: <ul>{
                   (typeof planet.residentList !== 'undefined') ? (
                      planet.residentList.map((resident, index: number) =>
@@ -58,11 +65,10 @@ export const Planets: React.FC = () => {
                     </ul>
                   </h3>
               </div>
-            </div>
+            </div> */
+            
           )
         ) : null}
       </div>
-
-    </>
   )
 }

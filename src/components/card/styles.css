@@ -1,0 +1,29 @@
+.page-card {
+  background-color: #407CA8;
+  border: solid 5px black;
+  flex-basis: 100%;
+  transition: border-color ease-in-out 300ms;
+  opacity: .8;
+}
+
+.page-card:hover {
+  border-color: white;
+  cursor: pointer;
+}
+
+.page-card-title {
+  background-color: #9AA0AA;
+  color: black;
+  font-size: 25px;
+  padding: 5px;
+}
+
+.page-card-text {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .page-card {
+    flex-basis: 50%;
+  }
+}
