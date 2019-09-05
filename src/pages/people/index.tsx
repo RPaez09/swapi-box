@@ -21,6 +21,7 @@ interface IPersonRequest {
 
 export const People: React.FC = () => {
   const [data, setData] = useState()
+  const [favs, setFavs] = useState(JSON.parse(localStorage.items || '{}'));
 
   useEffect(() => {
     fetch(`https://swapi.co/api/people/`)
@@ -41,6 +42,7 @@ export const People: React.FC = () => {
         person.population = response.population;
         setData([...people])
       })
+      .catch((error) => console.log(error))
       fetch(person.species)
         .then(response => response.json())
         .then(response => {
@@ -48,17 +50,36 @@ export const People: React.FC = () => {
           person.language = response.language;
           setData([...people])
       })
+      .catch((error) => console.log(error))
     }) 
   }
 
-  return (
 
+  const handleClick = (data: any) => {
+
+    const newFavs: { [key: string]: any } = { ...favs };
+
+    if (newFavs[data.url]) {
+      delete newFavs[data.url];
+    } else {
+      newFavs[data.url] = data;
+    }
+
+    setFavs((favs: any) => newFavs);
+    
+    localStorage.setItem('items', JSON.stringify(newFavs));
+  }
+
+  return (
+    
     <div className="d-flex flex-wrap justify-content-around">
-     
         {data ? (     
           data.map((person: IPersonDisplay, index: number) =>
           
-            <div className="page-card" key={ index }>
+            <div
+              className="page-card"
+              onClick={(() => handleClick( person ))}
+              key={ index }>
               <h2 className="page-card-title p-2">{ person.name }</h2>
               <div className="p-2">
               <h3 className="page-card-text">

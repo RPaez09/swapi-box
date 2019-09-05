@@ -13,7 +13,7 @@ img {
 .page-card {
   background-color: #407CA8;
   border: solid 5px black;
-  flex-basis: 50%;
+  flex-basis: 100%;
   transition: border-color ease-in-out 300ms;
   opacity: .8;
 }
@@ -35,5 +35,16 @@ img {
 }
 
 .button-wrapper {
+  flex-direction: column;
   background-color: #15161C;
+}
+
+@media screen and (min-width: 768px) {
+  .button-wrapper {
+    flex-direction: row;
+  }
+
+  .page-card {
+    flex-basis: 50%;
+  }
 }
