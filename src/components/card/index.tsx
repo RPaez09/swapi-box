@@ -15,6 +15,7 @@ interface ICardProps {
   passengers?: number;
   click?: any;
   url: string;
+  residentList?: [];
 }
 
 export const Card: React.FC<ICardProps> = (props) => {
@@ -79,6 +80,18 @@ export const Card: React.FC<ICardProps> = (props) => {
         }
         {props.passengers &&
           <h3 className="page-card-text">No. of Passengers: { props.passengers }</h3>
+        }
+
+        {props.residentList &&
+          <h3 className="page-card-text">Residents: <ul> {
+            (props.residentList.length > 0) ? (
+            props.residentList.map((resident, index: number) =>
+                <li key={resident + index}>{resident}</li>
+              )
+            ) : <li>none</li>
+          }
+            </ul>
+          </h3>
         }
 
       </div>

@@ -52,24 +52,9 @@ export const Planets: React.FC<IPlanetProps> = () => {
                 population={ planet.population }
                 climate={ planet.climate }
                 url={ planet.url }
+                residentList={ planet.residentList }
               >
               </Card>
-            /* <div className="page-card" key={ index }>
-              <h2 className="page-card-title p-2">{planet.name}</h2>
-              <div className="p-2">
-               
-                <h3 className="page-card-text">Residents: <ul>{
-                  (typeof planet.residentList !== 'undefined') ? (
-                     planet.residentList.map((resident, index: number) =>
-                     <li key={ resident + index }>{ resident }</li>
-                     )
-                  ) : null
-                }
-                    </ul>
-                  </h3>
-              </div>
-            </div> */
-            
           )
         ) : <Loader></Loader>
       }

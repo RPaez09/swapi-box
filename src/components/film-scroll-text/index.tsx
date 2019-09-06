@@ -28,7 +28,7 @@ export const FilmScrollText: React.FC = () => {
               <p className="subtitle"> {data.release_date}</p>
             </div>
           </div>
-      </div>
+        </div>
         ) : <Loader></Loader>} 
      </>
   )
