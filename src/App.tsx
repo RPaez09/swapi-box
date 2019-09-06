@@ -44,6 +44,7 @@ const App: React.FC = () => {
             <Route path="/planets" exact component={ Planets } />
             <Route path="/vehicles" exact component={ Vehicles } />
             <Route path="/favorites" exact component={ Favorites }/>
+            <Route component={ Home } />
           </Switch>
         </Col>
       </Row>

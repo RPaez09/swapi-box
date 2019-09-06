@@ -1,16 +1,45 @@
-.wrapper {
-  background-color: black;
-}
-
 .title {
   color: #FFD504;
   font-family: 'Poller One', cursive;
   font-size: 25px;
   line-height: 1;
+  text-shadow: 2px 2px grey;
 }
 
 .text {
   color: #FFD504;
   font-family: 'Poller One', cursive;
-  font-size: 20px;
+  font-size: 30px;
+  text-shadow: 2px 2px grey;
+  line-height: 2;
+}
+
+.subtitle {
+  font-weight: 900;
+}
+
+.wrapper {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.inner-wrapper {
+  position: absolute;
+  top: 100%;
+}
+
+.inner-wrapper.animated {
+  animation: crawl 25s linear;
+  animation-fill-mode: forwards;
+  top: 0;
+}
+
+@keyframes crawl {
+  from {
+    top: 100%;
+  }
+  to {
+    top: -300%;
+  } 
 }

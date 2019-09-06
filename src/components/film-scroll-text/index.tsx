@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from 'react';
 
 import './styles.css';
-import { Loader } from '../loader';
 
 export const FilmScrollText: React.FC = () => {
   const [data, setData] = useState()
@@ -21,7 +20,7 @@ export const FilmScrollText: React.FC = () => {
     <>
       {data ? (
         <div className = "wrapper" >
-          <div className="inner-wrapper p-2">
+          <div className="inner-wrapper animated p-2">
             <div>
               <p className="text">{data.opening_crawl}</p>
               <p className="title text-uppercase">{data.title}</p>
@@ -29,7 +28,7 @@ export const FilmScrollText: React.FC = () => {
             </div>
           </div>
         </div>
-        ) : <Loader></Loader>} 
+        ) : null } 
      </>
   )
 }
