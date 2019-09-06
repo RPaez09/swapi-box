@@ -1,28 +1,48 @@
 .page-card {
-  background-color: #407CA8;
-  border: solid 5px black;
+  background-color: black;
   flex-basis: 100%;
   transition: border-color ease-in-out 300ms;
   opacity: .8;
+  border: solid 5px transparent;
 }
 
 .page-card:hover {
-  border-color: white;
   cursor: pointer;
+  opacity: 1;
 }
 
 .page-card-title {
   background-color: #9AA0AA;
   color: black;
-  font-size: 25px;
+  font-size: 18px;
   padding: 5px;
+  position: relative;
+  padding-right: 35px;
+}
+
+.page-card-title.active:after {
+   content: "\2605";
+   position: absolute;
+   right: 10px;
+   top: 50%;
+   transform: translateY(-50%);
 }
 
 .page-card-text {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 @media screen and (min-width: 768px) {
+  .page-card-title {
+    font-size: 23px;
+  }
+
+  .page-card-text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .page-card {
     flex-basis: 50%;
   }

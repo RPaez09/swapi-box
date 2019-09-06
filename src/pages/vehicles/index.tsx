@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '../../components/card';
+import { Loader } from '../../components/loader';
 
 interface IVehicleProps {
   name: string;
   model: string;
   vehicle_class: string;
   passengers: number;
+  url: string;
 }
 
 export const Vehicles: React.FC<IVehicleProps> = () => {
@@ -19,11 +21,11 @@ export const Vehicles: React.FC<IVehicleProps> = () => {
   }, []);
 
   return (
-    <>
       <div className="d-flex flex-wrap justify-content-around">
         {data ? (
           data.map((vehicle: IVehicleProps, index: number) =>
           <Card
+            url={ vehicle.url }
             click={ vehicle }
             title={ vehicle.name }
             key={ index }
@@ -33,9 +35,8 @@ export const Vehicles: React.FC<IVehicleProps> = () => {
           >
           </Card>
           )
-        ) : <h1>Loading...</h1>}
-      </div>
-
-    </>
+        ) : <Loader></Loader>
+      }
+    </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '../../components/card';
+import { Loader } from '../../components/loader';
 
 interface IPlanetProps {
   name: string;
@@ -7,6 +8,7 @@ interface IPlanetProps {
   population: string;
   climate: string;
   residentList: [];
+  url: string;
 }
 
 export const Planets: React.FC<IPlanetProps> = () => {
@@ -49,6 +51,7 @@ export const Planets: React.FC<IPlanetProps> = () => {
                 terrain={ planet.terrain }
                 population={ planet.population }
                 climate={ planet.climate }
+                url={ planet.url }
               >
               </Card>
             /* <div className="page-card" key={ index }>
@@ -68,7 +71,8 @@ export const Planets: React.FC<IPlanetProps> = () => {
             </div> */
             
           )
-        ) : null}
-      </div>
+        ) : <Loader></Loader>
+      }
+    </div>
   )
 }

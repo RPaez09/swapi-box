@@ -1,0 +1,14 @@
+.favorites-button {
+  background-color: #FFD504;
+  border: solid 2px transparent;
+  color: black;
+  padding: 10px 25px;
+  transition: all ease-in-out 300ms;
+}
+
+.favorites-button:hover {
+  background-color: transparent;
+  border-color: #FFD504;
+  color: #FFD504;
+  text-decoration: none;
+}

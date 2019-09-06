@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Home } from "./pages/home/index"
 
 import { Container } from 'react-bootstrap';
@@ -22,10 +22,10 @@ const App: React.FC = () => {
   return (
     <Container className="my-5">
       <Row>
-        <Col xs={12} md={3}>
+        <Col xs={12} md={4}>
           <FilmScrollText />
         </Col>
-        <Col xs={12} md={9}>
+        <Col xs={12} md={8}>
 
           <div className="d-flex align-items-center justify-content-center flex-column">
             <MainTitle />

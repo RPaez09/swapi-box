@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../components/card';
+import { Loader } from '../../components/loader';
 
 interface IPersonProps {
   name: string;
@@ -9,6 +10,7 @@ interface IPersonProps {
   species: any;
   species_name: string;
   language: string;
+  url: string;
 }
 
 interface IPersonRequest {
@@ -60,6 +62,7 @@ export const People: React.FC<IPersonProps>= () => {
         {data ? (     
         data.map((person: IPersonProps, index: number) =>
               <Card
+                url={ person.url }
                 key={ index }
                 click={ person }
                 title={ person.name }
@@ -69,7 +72,8 @@ export const People: React.FC<IPersonProps>= () => {
                 population={ person.population }>
               </Card>
           )
-        ) : <h1>loading...</h1>}
+        ) : <Loader></Loader> 
+      }
     </div>       
   )
 }

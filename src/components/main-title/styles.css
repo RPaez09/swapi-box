@@ -1,6 +1,6 @@
 .page-title {
   font-family: 'Poller One', cursive;
-  font-size: 60px;
+  font-size: 40px;
   text-decoration: none;
   color: white;
   transition: all 300ms ease-in-out;
@@ -11,4 +11,10 @@
   text-decoration: none;
   cursor: pointer;
   opacity: .8;
+}
+
+@media screen and (min-width: 768px) {
+  .page-title {
+    font-size: 60px;
+  }
 }

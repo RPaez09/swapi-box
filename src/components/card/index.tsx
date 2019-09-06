@@ -4,7 +4,6 @@ import './styles.css';
 
 interface ICardProps {
   title: string;
- 
   homeworld?: string;
   species?: string;
   language?: string;
@@ -15,14 +14,16 @@ interface ICardProps {
   class?: string;
   passengers?: number;
   click?: any;
+  url: string;
 }
 
 export const Card: React.FC<ICardProps> = (props) => {
   const [favs, setFavs] = useState(JSON.parse(localStorage.items || '{}'));
+  const favClass = (favs[props.url]) ? 'active' : null;
 
   const handleClick = (data: any) => {
 
-    const newFavs: { [key: string]: any } = { ...favs };
+    const newFavs: { [key: string]: any } = { ...favs};
 
     if (newFavs[data.url]) {
       delete newFavs[data.url];
@@ -33,6 +34,10 @@ export const Card: React.FC<ICardProps> = (props) => {
     setFavs(() => newFavs);
 
     localStorage.setItem('items', JSON.stringify(newFavs));
+
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'items',
+    }));
   }
 
   return (
@@ -40,7 +45,11 @@ export const Card: React.FC<ICardProps> = (props) => {
       className="page-card"
       onClick={(() => handleClick( props.click ))}
      >
-      <h2 className="page-card-title p-2">{ props.title }</h2>
+      <h2
+        className={`page-card-title ${favClass}`}
+      >
+        { props.title }
+      </h2>
       
       <div className="p-2">
 
@@ -66,7 +75,7 @@ export const Card: React.FC<ICardProps> = (props) => {
           <h3 className="page-card-text">Model: { props.model }</h3>
         }
         {props.class &&
-          <h3 className="page-card-text">CLass: { props.class }</h3>
+          <h3 className="page-card-text">Class: { props.class }</h3>
         }
         {props.passengers &&
           <h3 className="page-card-text">No. of Passengers: { props.passengers }</h3>
