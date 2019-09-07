@@ -20,7 +20,7 @@ interface ICardProps {
 
 export const Card: React.FC<ICardProps> = (props) => {
   const [favs, setFavs] = useState(JSON.parse(localStorage.items || '{}'));
-  const favClass = (favs[props.url]) ? 'active' : null;
+  const favClass = (favs[props.url]) ? 'active' : '';
 
   const handleClick = (data: any) => {
 
